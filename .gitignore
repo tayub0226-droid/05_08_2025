@@ -1,6 +1,10 @@
 # Environment variables
 .env
 
+
+#Read me
+README.md
+
 # Python cache
 __pycache__/
 *.py[cod]
