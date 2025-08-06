@@ -8,6 +8,7 @@ from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Optional
 from fastapi import FastAPI, Request, status, Response, Depends, HTTPException
+from database.database import engine, Base
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, HTMLResponse, FileResponse, RedirectResponse
@@ -531,7 +532,7 @@ if __name__ == "__main__":
             "app.main:app",
             host="0.0.0.0",
             port=8008,
-            log_level="info",
+            log_level="info",   
             reload=False,  # Disable reload to avoid multiprocessing issues
             access_log=True
         )
