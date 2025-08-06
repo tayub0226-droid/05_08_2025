@@ -1,10 +1,13 @@
 """
 Base model and database configuration.
 """
-from database.database import Base, async_session as async_session_maker
+from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.ext.asyncio import AsyncSession
+from database.config import async_session_maker
 import os
 from pathlib import Path
+
+Base = declarative_base()
 
 # Dependency to get DB session
 async def get_db() -> AsyncSession:

@@ -8,7 +8,8 @@ from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Optional
 from fastapi import FastAPI, Request, status, Response, Depends, HTTPException
-from database.database import engine, Base
+from database.config import engine
+from models.base import Base
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, HTMLResponse, FileResponse, RedirectResponse

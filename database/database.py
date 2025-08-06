@@ -11,6 +11,12 @@ from datetime import datetime, timedelta
 import json
 import logging
 from dotenv import load_dotenv
+from database.config import engine, async_session_maker
+from models.base import Base
+from models.user import User
+from models.quote import Quote
+from models.chat import ChatSessionORM
+from models.interaction import QuoteInteractionORM
 
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
@@ -34,10 +40,7 @@ async_session_maker = async_sessionmaker(engine, expire_on_commit=False)
 Base = declarative_base()
 
 # Import models to ensure they're registered with SQLAlchemy
-from models.user import User
-from models.quote import Quote
-from models.chat import ChatSessionORM
-from models.interaction import QuoteInteractionORM
+
 
 class DatabaseManager:
     """Main database management class with all database operations."""
