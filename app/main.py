@@ -99,15 +99,14 @@ app.add_middleware(
 
 # Initialize database tables on startup
 @app.on_event("startup")
-async def startup_db():
-    """Initialize database tables on startup."""
-    from models.base import engine
+async def on_startup():
+    """Create database tables on startup."""
     try:
         async with engine.begin() as conn:
             await conn.run_sync(Base.metadata.create_all)
-        logger.info("Database tables created successfully")
+        print("✅ Database tables created successfully.")
     except Exception as e:
-        logger.error(f"Error creating database tables: {e}")
+        print(f"❌ Error creating tables: {e}")
         raise
 
 # Use the get_db dependency from models.base
