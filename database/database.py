@@ -34,7 +34,10 @@ async_session_maker = async_sessionmaker(engine, expire_on_commit=False)
 Base = declarative_base()
 
 # Import models to ensure they're registered with SQLAlchemy
-from app.models import User, Quote, ChatMessageORM, QuoteInteractionORM
+from models.user import User
+from models.quote import Quote
+from models.chat import ChatSessionORM
+from models.interaction import QuoteInteractionORM
 
 class DatabaseManager:
     """Main database management class with all database operations."""
