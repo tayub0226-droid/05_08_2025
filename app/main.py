@@ -523,6 +523,8 @@ if __name__ == "__main__":
     import uvicorn
     
     try:
+        port = int(os.environ.get("PORT", 8000))
+        
         logger.info("Starting Business Knowledge Chat server...")
         logger.info("Server will be available at: http://localhost:8008")
         logger.info("Press Ctrl+C to stop the server")
@@ -531,7 +533,7 @@ if __name__ == "__main__":
         uvicorn.run(
             "app.main:app",
             host="0.0.0.0",
-            port=8008,
+            port=port,
             log_level="info",   
             reload=False,  # Disable reload to avoid multiprocessing issues
             access_log=True
